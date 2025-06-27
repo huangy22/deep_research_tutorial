@@ -29,7 +29,8 @@ def paper_list_before_agent(callback_context: CallbackContext):
     if paper_list is None or len(paper_list) == 0:
         callback_context._event_actions.escalate = True
         return
-    callback_context.state['paper_list'] = {f'paper{i+1}': paper for i, paper in enumerate(paper_list)}
+    # use 5 papers for demo
+    callback_context.state['paper_list'] = {f'paper{i+1}': paper for i, paper in enumerate(paper_list[:5])}
     return
 
 class GroupPaperAgent(BaseAgent):
